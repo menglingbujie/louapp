@@ -1,4 +1,5 @@
 <script setup>
+import {ref} from "vue"
 import loumap15 from "@/modal/area15"
 import loumap18 from "@/modal/area18"
 import loumap22 from "@/modal/area22"
@@ -63,10 +64,11 @@ countLout(loumap63);
 countLout(loumap73);
 countLout(loumap79);
 const total =_total3+_total2+_total1, alldone=_total3done+_total2done+_total1done;
+const updateDataTime=ref(import.meta.env.VITE_UPDATE_DATA_TIME);
 </script>
 <template>
 <div class="area_total">
-    <h3>总共10个地块共{{total}}套, 已选{{alldone}}，未选{{total-alldone}}，以下汇总统计信息({{(new Date()).toLocaleString()}} by 梦令布孑)</h3>
+    <h3>总共10个地块共{{total}}套, 已选{{alldone}}，未选{{total-alldone}}，以下汇总统计信息({{updateDataTime}} by 梦令布孑)</h3>
     <ul class="list">
         <li class="item">
             <label>三居总共：{{ _total3 }}套，已选{{ _total3done }}套，未选{{ (_total3-_total3done) }}套</label>

@@ -22,7 +22,6 @@ function doCountLou(area){
   gotoLou(`/louapp/dist/#/area${area}`);
 }
 doCountLou(15)
-console.log("====",import.meta.env)
 const updateDataTime=ref(import.meta.env.VITE_UPDATE_DATA_TIME);
 </script>
 <template>
