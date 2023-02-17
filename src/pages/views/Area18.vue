@@ -51,7 +51,6 @@ countLout(loumap);
 <template>
 <div class="area a15">
   <h2 class="title">18号地</h2>
-  <p style="font-weight:bold; font-size:14px;">统计时间: ({{(new Date()).toLocaleString()}} by 梦令布孑)</p>
   <ul class="list">
       <li class="item">
           <label>三居总共：{{ _total3 }}套，已选{{ _total3done }}套，未选{{ (_total3-_total3done) }}套</label>
@@ -79,7 +78,7 @@ countLout(loumap);
       </div>
     </div>
   </div>
-  <div class="parts">
+  <div class="parts three">
     <div class="part" :class="'p'+index" v-for="(p,index) in louother" :key="'part-'+index">
       <h3 class="tpart">#{{p.part}}号楼</h3>
       <div class="list">
@@ -122,6 +121,8 @@ countLout(loumap);
 <style lang="less" scoped>
 @import "@/assets/less/color";
 .area{
+  min-width:1920px;
+  border:1px solid red;
   display:flex;
   flex-direction: column;
   >.parts{
@@ -136,7 +137,9 @@ countLout(loumap);
       >.part{
         border:none;
         padding:0;
-        width:33%;
+        &:nth-child(1){width:40%;}
+        &:nth-child(2){width:30%;}
+        &:nth-child(3){width:30%;}
       }
     }
     >.part{

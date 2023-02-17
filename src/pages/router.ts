@@ -12,11 +12,17 @@ import PageArea79 from "./views/Area79.vue";
 
 import PageAreaTotal from "./views/AreaTotal.vue";
 import PageAreaTotalByFloor from "./views/AreaTotalByFloor.vue";
+import PageAreaDisplay from "./views/AreaDisplay.vue";
 const routes=[
   {
     path:"",
     name:"index",
     children:[
+      {
+        path:"area_display",
+        name:"area_display",
+        component:PageAreaDisplay,
+      },
       {
         path:"area_total",
         name:"area_total",

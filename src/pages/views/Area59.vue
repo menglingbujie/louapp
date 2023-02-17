@@ -52,7 +52,6 @@ countLout(loumap);
 <template>
 <div class="area a15">
   <h2 class="title">59号地</h2>
-  <p style="font-weight:bold; font-size:14px;">统计时间: ({{(new Date()).toLocaleString()}} by 梦令布孑)</p>
   <ul class="list">
       <li class="item">
           <label>三居总共：{{ _total3 }}套，已选{{ _total3done }}套，未选{{ (_total3-_total3done) }}套</label>
@@ -129,8 +128,7 @@ countLout(loumap);
     &.double{
       >.part{
         border:none;
-        padding:0 10%;
-        width:30%;
+        width:50%;
       }
     }
     >.part{
