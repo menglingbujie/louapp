@@ -27,7 +27,7 @@ export default ({mode})=>{
       })
     ],
     root:resolve(__dirname,"src/pages"),
-    base:"/",
+    base:"/louapp/dist",
     publicDir:resolve(__dirname,"public"),
     resolve:{
       alias:[
