@@ -56,12 +56,6 @@ export default ({mode})=>{
       rollupOptions:{
         input:{
           lou:resolve(__dirname,"./src/pages/index.html")
-        },
-        output:{
-          manualChunks:{
-            __vendor:["lodash"],
-            __antd:["ant-design-vue"]
-          }
         }
       }
     }
