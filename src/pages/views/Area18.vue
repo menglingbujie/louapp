@@ -122,7 +122,6 @@ countLout(loumap);
 @import "@/assets/less/color";
 .area{
   min-width:1920px;
-  border:1px solid red;
   display:flex;
   flex-direction: column;
   >.parts{
