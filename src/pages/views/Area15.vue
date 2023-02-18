@@ -101,9 +101,9 @@ countLout(loumap);
   >.parts{
     >.part{
       min-height:200px;
-      padding:0 10%;
+      // padding:0 10%;
       float:left;
-      width:30%;
+      width:50%;
       text-align: center;
     }
   }

@@ -78,7 +78,7 @@ countLout(loumap);
       </div>
     </div>
   </div>
-  <div class="parts three">
+  <div class="parts two">
     <div class="part" :class="'p'+index" v-for="(p,index) in louother" :key="'part-'+index">
       <h3 class="tpart">#{{p.part}}号楼</h3>
       <div class="list">
@@ -130,6 +130,13 @@ countLout(loumap);
         padding:0;
         border:none;
         width:100%;
+      }
+    }
+    &.two{
+      >.part{
+        padding:0;
+        border:none;
+        width:50%;
       }
     }
     &.three{

@@ -7,7 +7,7 @@ export default [
     // 单元1-3
     units:[
       [
-        [{door:601,status:1,type:2},{door:602,status:0,type:2}],
+        [{door:601,status:1,type:2},{door:602,status:1,type:2}],
         [{door:501,status:1,type:2},{door:502,status:1,type:2}],
         [{door:401,status:1,type:2},{door:402,status:1,type:2}],
         [{door:301,status:1,type:2},{door:302,status:1,type:2}],
@@ -28,7 +28,7 @@ export default [
         [{door:401,status:1,type:3},{door:402,status:1,type:3}],
         [{door:301,status:1,type:3},{door:302,status:1,type:3}],
         [{door:201,status:0,type:3},{door:202,status:0,type:3}],
-        [{door:101,status:0,type:3},{door:102,status:0,type:2}],
+        [{door:101,status:0,type:3},{door:102,status:1,type:2}],
       ]
     ]
   },
@@ -150,7 +150,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:0}],
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
