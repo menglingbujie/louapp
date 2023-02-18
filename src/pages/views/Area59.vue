@@ -93,6 +93,12 @@ countLout(loumap);
           <h4 class="tunit">{{p.units.length-idx}}单元</h4>
           <div class="list">
             <div class="door" v-for="door,didx in u" :key="'door'+didx">
+              <template v-if="!!door[3]">
+                <div class="d" :class="[{'selected':(door[3].status==1)?true:false},'t'+(door[3].type||p.type)]">{{door[3].door}}</div>
+              </template>
+              <template v-if="!!door[2]">
+                <div class="d" :class="[{'selected':(door[2].status==1)?true:false},'t'+(door[2].type||p.type)]">{{door[2].door}}</div>
+              </template>
               <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+p.type]">{{door[1].door}}</div>
               <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+p.type]">{{door[0].door}}</div>
             </div>
