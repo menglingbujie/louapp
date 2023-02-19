@@ -33,12 +33,12 @@ function countLout(arr){
                       }
                     }
                     if(m.status==1){
-                        if(v.type==3||m.type==3){
-                            _total3done++;
+                        if(v.type==1||m.type==1){
+                          _total1done++;
                         }else if(v.type==2||m.type==2){
-                            _total2done++;
-                        }else if(v.type==1||m.type==1){
-                            _total1done++;
+                          _total2done++;
+                        }else if(v.type==3||m.type==3){
+                          _total3done++;
                         }              
                     }
                 })

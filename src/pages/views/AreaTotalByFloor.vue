@@ -38,12 +38,12 @@ function countLout(arr,area){
           // 统计已选套数
           if(m.status!=1){
             // 未选的
-            if(v.type==3||m.type==3){
-              _uobj.floor3.push(m.door);
+            if(v.type==1||m.type==1){
+              _uobj.floor1.push(m.door);
             }else if(v.type==2||m.type==2){
               _uobj.floor2.push(m.door);
-            }else if(v.type==1||m.type==1){
-              _uobj.floor1.push(m.door);
+            }else if(v.type==3||m.type==3){
+              _uobj.floor3.push(m.door);
             }
           }
         })
