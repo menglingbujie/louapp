@@ -75,7 +75,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:0}],
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
@@ -91,7 +91,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:1}],
         [{door:101,status:0},{door:102,status:0}],
       ]
     ]
@@ -188,7 +188,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:1},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:1}],
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
@@ -220,7 +220,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:0}],
         [{door:101,status:0},{door:102,status:0}],
       ]
     ]
@@ -237,7 +237,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:0}],
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
@@ -293,7 +293,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:0}],
         [{door:101,status:0},{door:102,status:0}],
       ]
     ]
@@ -317,7 +317,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:1}],
         [{door:101,status:0},{door:102,status:0}],
       ]
     ]
@@ -334,7 +334,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:1}],
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
@@ -350,7 +350,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:1},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:1}],
         [{door:101,status:0},{door:102,status:0}],
       ]
     ]
@@ -366,7 +366,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:1}],
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
@@ -430,7 +430,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:1}],
         [{door:101,status:0},{door:102,status:0}],
       ]
     ]
@@ -443,7 +443,7 @@ export default [
     // 单元1-3
     units:[
       [
-        [{door:601,status:1},{door:602,status:0}],
+        [{door:601,status:1},{door:602,status:1}],
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
@@ -451,14 +451,6 @@ export default [
         [{door:101,status:1},{door:102,status:0}],
       ],
       [
-        [{door:601,status:1},{door:602,status:0}],
-        [{door:501,status:1},{door:502,status:1}],
-        [{door:401,status:1},{door:402,status:1}],
-        [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
-        [{door:101,status:0},{door:102,status:0}],
-      ],
-      [
         [{door:601,status:1},{door:602,status:1}],
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
@@ -475,7 +467,15 @@ export default [
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
-        [{door:601,status:1},{door:602,status:0}],
+        [{door:601,status:1},{door:602,status:1}],
+        [{door:501,status:1},{door:502,status:1}],
+        [{door:401,status:1},{door:402,status:1}],
+        [{door:301,status:1},{door:302,status:1}],
+        [{door:201,status:0},{door:202,status:0}],
+        [{door:101,status:0},{door:102,status:0}],
+      ],
+      [
+        [{door:601,status:1},{door:602,status:1}],
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
@@ -503,7 +503,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:0}],
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
@@ -519,7 +519,7 @@ export default [
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
-        [{door:201,status:0},{door:202,status:0}],
+        [{door:201,status:1},{door:202,status:0}],
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
@@ -539,7 +539,7 @@ export default [
     // 单元1-3
     units:[
       [
-        [{door:601,status:0},{door:602,status:1}],
+        [{door:601,status:1},{door:602,status:1}],
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
@@ -547,7 +547,7 @@ export default [
         [{door:101,status:0},{door:102,status:0}],
       ],
       [
-        [{door:601,status:1},{door:602,status:0}],
+        [{door:601,status:1},{door:602,status:1}],
         [{door:501,status:1},{door:502,status:1}],
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],

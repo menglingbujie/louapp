@@ -10,60 +10,18 @@ import loumap69 from "@/modal/area69"
 import loumap63 from "@/modal/area63"
 import loumap73 from "@/modal/area73"
 import loumap79 from "@/modal/area79"
-import _ from "lodash";
-let _total3 = 0;
-let _total2 = 0;
-let _total1 = 0;
-let _total3done = 0;
-let _total2done = 0;
-let _total1done = 0;
-function countLout(arr){
-    _.forEach(arr,(v)=>{
-        _.forEach(v.units,(u)=>{
-            _.forEach(u,(d)=>{
-                _.forEach(d,(m)=>{
-                    if(!!m.type){
-                      if(m.type==3){
-                        _total3++;
-                      }else if(m.type==2){
-                          _total2++;
-                      }else if(m.type==1){
-                          _total1++;
-                      }
-                    }else{
-                      if(v.type==3){
-                        _total3++;
-                      }else if(v.type==2){
-                        _total2++;
-                      }else if(v.type==1){
-                        _total1++;
-                      }
-                    }
-                    if(m.status==1){
-                        if(v.type==1||m.type==1){
-                          _total1done++;
-                        }else if(v.type==2||m.type==2){
-                          _total2done++;
-                        }else if(v.type==3||m.type==3){
-                          _total3done++;
-                        }              
-                    }
-                })
-            })
-        })
-    })
-}
-countLout(loumap15);
-countLout(loumap18);
-countLout(loumap22);
-countLout(loumap47);
-countLout(loumap48);
-countLout(loumap59);
-countLout(loumap69);
-countLout(loumap63);
-countLout(loumap73);
-countLout(loumap79);
-const total =_total3+_total2+_total1, alldone=_total3done+_total2done+_total1done;
+import {countAllLou} from "@/utils/index"
+import {concat} from "lodash"
+const {
+  _total3,
+  _total2,
+  _total1,
+  _total3done,
+  _total2done,
+  _total1done,
+  total,
+  alldone
+} = countAllLou(concat(loumap15,loumap18,loumap22,loumap47,loumap48,loumap59,loumap63,loumap69,loumap73,loumap79));
 const updateDataTime=ref(import.meta.env.VITE_UPDATE_DATA_TIME);
 </script>
 <template>
@@ -84,8 +42,12 @@ const updateDataTime=ref(import.meta.env.VITE_UPDATE_DATA_TIME);
 </template>
 <style lang="less" scoped>
 .area_total{
-    >.warn{
-        color:red;
-    }
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  >.warn{
+    color:red;
+  }
 }
 </style>
