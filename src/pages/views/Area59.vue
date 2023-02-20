@@ -3,51 +3,8 @@ import loumap from "@/modal/area59"
 const firstlout = loumap.slice(0,2);
 const loutother = loumap.slice(2,loumap.length-2);
 const lastlout = loumap.slice(loumap.length-2);
+const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(loumap);
 
-import _ from "lodash";
-let _total3 = 0;
-let _total2 = 0;
-let _total1 = 0;
-let _total3done = 0;
-let _total2done = 0;
-let _total1done = 0;
-function countLout(arr){
-    _.forEach(arr,(v)=>{
-        _.forEach(v.units,(u)=>{
-            _.forEach(u,(d)=>{
-                _.forEach(d,(m)=>{
-                    if(!!m.type){
-                      if(m.type==3){
-                        _total3++;
-                      }else if(m.type==2){
-                          _total2++;
-                      }else if(m.type==1){
-                          _total1++;
-                      }
-                    }else{
-                      if(v.type==3){
-                        _total3++;
-                      }else if(v.type==2){
-                        _total2++;
-                      }else if(v.type==1){
-                        _total1++;
-                      }
-                    }
-                    if(m.status==1){
-                        if(v.type==1||m.type==1){
-                          _total1done++;
-                        }else if(v.type==2||m.type==2){
-                          _total2done++;
-                        }else if(v.type==3||m.type==3){
-                          _total3done++;
-                        }              
-                    }
-                })
-            })
-        })
-    })
-}
-countLout(loumap);
 </script>
 <template>
 <div class="area a15">
