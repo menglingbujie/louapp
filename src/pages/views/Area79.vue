@@ -3,7 +3,6 @@ import loumap from "@/modal/area79"
 import {countLou} from "@/utils/index"
 const firstlout = loumap.slice(0,3);
 const loumapother = loumap.slice(3);
-
 const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(loumap);
 </script>
 <template>

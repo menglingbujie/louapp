@@ -4,7 +4,6 @@ import {countLou} from "@/utils/index"
 let loumapother = loumap.slice(0,loumap.length-2);
 loumapother.push(loumap[loumap.length-1]);
 const lastlou = [loumap[loumap.length-2]];
-
 const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(loumap);
 </script>
 <template>

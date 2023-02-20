@@ -5,7 +5,6 @@ const firstlout = loumap.slice(0,4);
 const secondlout = loumap.slice(4,5);
 const thirdlout = loumap.slice(5,8);
 const fourlout = loumap.slice(8);
-
 const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(loumap);
 </script>
 <template>

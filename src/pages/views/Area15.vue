@@ -1,8 +1,8 @@
 <script setup>
 import loumap from "@/modal/area15"
+import {countLou} from "@/utils/index"
 const firstlout = loumap[0];
 const loumapother = loumap.slice(1);
-import {countLou} from "@/utils/index"
 const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(loumap);
 </script>
 <template>
