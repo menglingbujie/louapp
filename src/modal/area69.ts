@@ -92,7 +92,7 @@ export default [
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
         [{door:201,status:1},{door:202,status:1}],
-        [{door:101,status:0},{door:102,status:1}],
+        [{door:101,status:1},{door:102,status:1}],
       ],
       [
         [{door:601,status:1},{door:602,status:1}],
@@ -125,7 +125,7 @@ export default [
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
         [{door:201,status:1},{door:202,status:1}],
-        [{door:101,status:1},{door:102,status:0}],
+        [{door:101,status:1},{door:102,status:1}],
       ],
       [
         [{door:601,status:1},{door:602,status:1}],
@@ -149,7 +149,7 @@ export default [
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
         [{door:201,status:1},{door:202,status:1}],
-        [{door:101,status:1},{door:102,status:0}],
+        [{door:101,status:1},{door:102,status:1}],
       ],
       [
         [{door:601,status:1},{door:602,status:1}],
@@ -157,7 +157,7 @@ export default [
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
         [{door:201,status:1},{door:202,status:1}],
-        [{door:101,status:1},{door:102,status:0}],
+        [{door:101,status:1},{door:102,status:1}],
       ],
       [
         [{door:601,status:1},{door:602,status:1}],
@@ -165,7 +165,7 @@ export default [
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
         [{door:201,status:1},{door:202,status:1}],
-        [{door:101,status:1},{door:102,status:0}],
+        [{door:101,status:1},{door:102,status:1}],
       ]
     ]
   },
@@ -227,7 +227,7 @@ export default [
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
         [{door:201,status:1},{door:202,status:1}],
-        [{door:101,status:1},{door:102,status:0}],
+        [{door:101,status:1},{door:102,status:1}],
       ],
       [
         [{door:601,status:1},{door:602,status:1}],
@@ -235,7 +235,7 @@ export default [
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
         [{door:201,status:1},{door:202,status:1}],
-        [{door:101,status:1},{door:102,status:0}],
+        [{door:101,status:1},{door:102,status:1}],
       ],
       [
         [{door:601,status:1},{door:602,status:1}],
@@ -267,7 +267,7 @@ export default [
         [{door:401,status:1},{door:402,status:1}],
         [{door:301,status:1},{door:302,status:1}],
         [{door:201,status:1},{door:202,status:1}],
-        [{door:101,status:1},{door:102,status:0}],
+        [{door:101,status:1},{door:102,status:1}],
       ]
     ]
   },
