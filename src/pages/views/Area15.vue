@@ -1,9 +1,46 @@
 <script setup>
+import { ref } from 'vue';
 import loumap from "@/modal/area15"
 import {countLou} from "@/utils/index"
+import qlhlou from '@/modal/qlhlou.json'
 const firstlout = loumap[0];
 const loumapother = loumap.slice(1);
 const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(loumap);
+const land = 15; //地块
+console.log('-----qlhlou-->', qlhlou)
+const visible = ref(false)
+
+let allInfo = ref()
+let selectedInfo = ref()
+
+/** 处理房间点击
+ * @last-modified 2023/03/07
+ * @param {object} {p,unit, door} */
+const handleRoomClick = ({p, unit, door}) => {  
+  allInfo.value = `00${land}地块：${p.part}号楼 ${unit}单元${door.door}`;  
+  showDrawer();
+}
+
+const afterVisibleChange = (bool) => {
+  console.log('visible', bool);
+};
+
+const showDrawer = () => {
+  visible.value = true;
+
+  qlhlou?.list.forEach((item) => {
+    if(item['第1轮选房信息'] && item['第1轮选房信息'].includes(allInfo.value) ){
+      selectedInfo.value = item;
+    }
+    if(item['第2轮选房信息'] && item['第2轮选房信息'].includes(allInfo.value) ){
+      selectedInfo.value = item;
+    }
+    if(item['选房信息'] && item['选房信息'].includes(allInfo.value) ){
+      selectedInfo.value = item;
+    }
+  })
+};
+
 </script>
 <template>
 <div class="area a15">
@@ -27,13 +64,17 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
         <div class="list">
           <div class="door" v-for="door,didx in u" :key="'door'+didx">
             <template v-if="!!door[3]">
-                <div class="d" :class="[{'selected':(door[3].status==1)?true:false},'t'+(door[3].type||p.type)]">{{door[3].door}}</div>
+                <div class="d" :class="[{'selected':(door[3].status==1)?true:false},'t'+(door[3].type||p.type)]"
+                @click="handleRoomClick({p: firstlout, unit: firstlout.units.length-idx, door: door[3]})">{{door[3].door}}</div>
               </template>
               <template v-if="!!door[2]">
-                <div class="d" :class="[{'selected':(door[2].status==1)?true:false},'t'+(door[2].type||p.type)]">{{door[2].door}}</div>
+                <div class="d" :class="[{'selected':(door[2].status==1)?true:false},'t'+(door[2].type||p.type)]"
+                @click="handleRoomClick({p: firstlout, unit: firstlout.units.length-idx, door: door[3]})">{{door[2].door}}</div>
               </template>
-            <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+(door[1].type||firstlout.type)]">{{door[1].door}}</div>
-            <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+(door[0].type||firstlout.type)]">{{door[0].door}}</div>
+            <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+(door[1].type||firstlout.type)]"
+            @click="handleRoomClick({p: firstlout, unit: firstlout.units.length-idx, door: door[1]})">{{door[1].door}}</div>
+            <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+(door[0].type||firstlout.type)]"
+            @click="handleRoomClick({p: firstlout, unit: firstlout.units.length-idx, door: door[0]})">{{door[0].door}}</div>
           </div>
         </div>
       </div>
@@ -47,8 +88,10 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
           <h4 class="tunit">{{p.units.length-idx}}单元</h4>
           <div class="list">
             <div class="door" v-for="door,didx in u" :key="'door'+didx">
-              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+p.type]">{{door[1].door}}</div>
-              <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+p.type]">{{door[0].door}}</div>
+              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+p.type]"
+              @click="handleRoomClick({p, unit: p.units.length-idx, door: door[1]})">{{door[1].door}}</div>
+              <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+p.type]"
+              @click="handleRoomClick({p, unit: p.units.length-idx, door: door[0]})">{{door[0].door}}</div>
             </div>
           </div>
         </div>
@@ -56,6 +99,23 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
     </div>
   </div>
 </div>
+
+<!-- 抽屉 -->
+<a-drawer
+  v-model:visible="visible"
+  class="custom-class"
+  style="color: red"
+  title="Basic Drawer"
+  placement="right"
+  :mask="false"
+  @after-visible-change="afterVisibleChange">
+  <p>{{ allInfo }}</p>
+
+  <p v-for="(value, key, index) in selectedInfo">
+    {{ key }}: {{ value }}
+  </p>
+  
+</a-drawer>
 </template>
 <style lang="less" scoped>
 @import "@/assets/less/color";
@@ -84,6 +144,11 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
             >.d{
               padding:0 8px;
               border:1px solid @color_black;
+              cursor: pointer;
+              &:hover{
+                background-color: coral !important;
+                color: #fff !important;
+              }
               &.t1{
                 background-color:@color_one;
               }
@@ -95,6 +160,7 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
                 background-color:white;
                 color:black;
                 position:relative;
+                
               }
             }
           }
