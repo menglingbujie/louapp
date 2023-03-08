@@ -1,6 +1,10 @@
 <script setup>
 import loumap from "@/modal/area48"
 import {countLou} from "@/utils/index"
+import { useHouseInfo } from '@/utils/use/useHouseInfo';
+const { info, getHouseInfo } = useHouseInfo();
+const land = '48'; //地块
+
 const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(loumap);
 </script>
 <template>

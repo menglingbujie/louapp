@@ -1,6 +1,10 @@
 <script setup>
 import loumap from "@/modal/area69"
 import {countLou} from "@/utils/index"
+import { useHouseInfo } from '@/utils/use/useHouseInfo';
+const { info, getHouseInfo } = useHouseInfo();
+const land = '69'; //地块
+
 const firstlout = loumap.slice(0,4);
 const secondlout = loumap.slice(4,5);
 const thirdlout = loumap.slice(5,8);
