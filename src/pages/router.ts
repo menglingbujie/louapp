@@ -13,11 +13,51 @@ import PageArea79 from "./views/Area79.vue";
 import PageAreaTotal from "./views/AreaTotal.vue";
 import PageAreaTotalByFloor from "./views/AreaTotalByFloor.vue";
 import PageAreaDisplay from "./views/AreaDisplay.vue";
+import PageSearchLou from "./views/SearchLou.vue";
+
+import PageHome from "./views/Home.vue";
+
+import PageMobileSearchLou from "./views/mobile/SearchLou.vue";
+
+import PageError from "./views/Error.vue";
+
 const routes=[
   {
     path:"",
     name:"index",
     children:[
+      {
+        path:"",
+        name:"",
+        redirect:"home"
+      },
+      {
+        path:"error",
+        name:"error",
+        component:PageError,
+      },
+      {
+        path:"home",
+        name:"home",
+        component:PageHome
+      },
+      {
+        path:"mobile",
+        name:"mobile",
+        children:[
+          {
+            path:"search-lou",
+            name:"search-lou-h5",
+            // component:PageMobileSearchLou,
+            redirect:"error"
+          }
+        ]
+      },
+      {
+        path:"search-lou",
+        name:"search-lou",
+        component:PageSearchLou,
+      },
       {
         path:"area_display",
         name:"area_display",
