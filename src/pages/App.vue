@@ -18,8 +18,9 @@ html,body{
   padding:10px 0;
   background-color:whitesmoke;
 }
-.area{
+.area,.container,.page{
   background-color:whitesmoke;
+  height:inherit;
 }
 h1,h2,h3,h4,h5,h6{padding:0;margin:0;}
 ul,li{

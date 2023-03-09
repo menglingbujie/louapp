@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     ATag: typeof import('ant-design-vue/es')['Tag']
+    AResult: typeof import('ant-design-vue/es')['Result']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
