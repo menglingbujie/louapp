@@ -92,6 +92,9 @@ const afterVisibleChange = (bool) => {
 .ant-layout-header{
   height:40px;line-height:40px;
 }
+.parts{
+  background-color:whitesmoke;
+}
 </style>
 <style lang="less" scoped>
 .area_display{
@@ -117,7 +120,8 @@ const afterVisibleChange = (bool) => {
     >.content{
       overflow:hidden;
       max-height:100%;height:100%;
-      overflow-y:auto;
+      overflow-y:hidden;
+      background-color:whitesmoke;
       >.ifr{
         border:none;
         width:100%;height:100%;
