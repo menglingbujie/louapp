@@ -12,8 +12,7 @@ import loumap73 from "@/modal/area73"
 import loumap79 from "@/modal/area79"
 import _ from "lodash";
 // import { UserOutlined } from '@ant-design/icons-vue';
-import { Village } from '@/utils/enum'
-
+import { Village } from '@/utils/enum';
 
 const currentUrl = ref("");
 function gotoLou(url){
@@ -32,10 +31,8 @@ let selectedHouse = ref();
 let selectedTitle = ref();
 
 window.addEventListener("message", receiveMessage, false);
-function receiveMessage(event){
-  console.log('----receiveMessage--->', event);
-  const data = event?.data && JSON.parse(event.data);
-  console.log('----receiveMessage---data-->', data);
+function receiveMessage(event){  
+  const data = event?.data && (typeof event.data === 'string') && JSON.parse(event.data);
   const { type, title, content } = data;
   if(type === 'house'){
     visible.value = true;
@@ -45,7 +42,7 @@ function receiveMessage(event){
 }
 
 const afterVisibleChange = (bool) => {
-  console.log('visible', bool);
+  // console.log('visible', bool);
 };
 
 </script>

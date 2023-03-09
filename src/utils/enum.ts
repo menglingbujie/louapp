@@ -4,5 +4,5 @@ export enum Village {
   BS = "北四位",
   NS = "南四位",  
   XS = "西石府",
-  SW = "SW",
+  SW = "上万",
 }

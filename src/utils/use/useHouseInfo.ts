@@ -1,6 +1,5 @@
 import { ref } from 'vue';
 import qlhlou from '@/modal/qlhlou.json';
-console.log('---qlhlou---111->', qlhlou);
 
 /** 房子信息
  * @last-modified 2023/03/08
@@ -22,7 +21,7 @@ export const useHouseInfo = () => {
         info.value = item;
       }
     })
-    console.log('----getHouseInfo--info-->', info);
+    // console.log('----getHouseInfo--info-->', info);
     let data = { type: 'house', title: searchHouse,  content: info.value }
     parent.postMessage(JSON.stringify(data), '*')
   }

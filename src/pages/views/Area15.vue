@@ -97,11 +97,6 @@ const { info, getHouseInfo } = useHouseInfo();
             >.d{
               padding:0 8px;
               border:1px solid @color_black;
-              cursor: pointer;
-              &:hover{
-                background-color: coral !important;
-                color: #fff !important;
-              }
               &.t1{
                 background-color:@color_one;
               }

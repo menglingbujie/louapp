@@ -89,3 +89,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+.d{
+  cursor: pointer;
+}
+.d:hover{
+  background-color: #eb984e  !important;
+  border: 1px solid #fad7a0 !important;
+  color: #fff !important;
+}
+
