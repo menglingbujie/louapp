@@ -11,6 +11,8 @@ import loumap63 from "@/modal/area63"
 import loumap73 from "@/modal/area73"
 import loumap79 from "@/modal/area79"
 import _ from "lodash";
+// import { UserOutlined } from '@ant-design/icons-vue';
+import { Village } from '@/utils/enum';
 
 const currentUrl = ref("");
 function gotoLou(url){
@@ -23,6 +25,26 @@ function doCountLou(area){
 }
 doCountLou(15)
 const updateDataTime=ref(import.meta.env.VITE_UPDATE_DATA_TIME);
+
+const visible = ref(false);
+let selectedHouse = ref();
+let selectedTitle = ref();
+
+window.addEventListener("message", receiveMessage, false);
+function receiveMessage(event){  
+  const data = event?.data && (typeof event.data === 'string') && JSON.parse(event.data);
+  const { type, title, content } = data;
+  if(type === 'house'){
+    visible.value = true;
+    selectedTitle.value = title;
+    selectedHouse.value = content;
+  }
+}
+
+const afterVisibleChange = (bool) => {
+  // console.log('visible', bool);
+};
+
 </script>
 <template>
 <a-layout class="area_display">
@@ -49,6 +71,22 @@ const updateDataTime=ref(import.meta.env.VITE_UPDATE_DATA_TIME);
     </div>
   </a-layout-content>
 </a-layout>
+<!-- 抽屉 -->
+<a-drawer
+  v-model:visible="visible"
+  style="color: red"
+  title="House Information"
+  placement="right"
+  :mask="false"
+  @after-visible-change="afterVisibleChange">
+  <a-card :title="selectedTitle" :bordered="false" style="width: 300px">
+    <a-avatar :size="64"> 
+    </a-avatar>
+    <p>业主： <a-tag color="green">{{ selectedHouse['被腾退人'] }}</a-tag></p>
+    <p>村落： <a-tag color="orange">{{ Village[selectedHouse['村落简称']] }}</a-tag></p>
+  </a-card>
+  
+</a-drawer>
 </template>
 <style lang="less">
 .ant-layout-header{

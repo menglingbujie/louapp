@@ -1,6 +1,10 @@
 <script setup>
 import loumap from "@/modal/area18"
 import {countLou} from "@/utils/index"
+import { useHouseInfo } from '@/utils/use/useHouseInfo';
+const { info, getHouseInfo } = useHouseInfo();
+const land = '18'; //地块
+
 const firstlout = loumap[0];
 const louother = loumap.slice(1,loumap.length-3);
 const lastlout = loumap.slice(loumap.length-3);
@@ -28,7 +32,8 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
           <h4 class="tunit">{{firstlout.units.length-idx}}单元</h4>
           <div class="list">
             <div class="door" v-for="door,didx in u" :key="'door'+didx">
-              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+(door[1].type||firstlout.type)]">{{door[1].door}}</div>
+              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+(door[1].type||firstlout.type)]"
+                @click="getHouseInfo({land, p: firstlout, unit: firstlout.units.length-idx, door: door[0]})">{{door[1].door}}</div>
               <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+(door[0].type||firstlout.type)]">{{door[0].door}}</div>
             </div>
           </div>
@@ -45,13 +50,17 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
           <div class="list">
             <div class="door" v-for="door,didx in u" :key="'door'+didx">
               <template v-if="!!door[3]">
-                <div class="d" :class="[{'selected':(door[3].status==1)?true:false},'t'+(door[3].type||p.type)]">{{door[3].door}}</div>
+                <div class="d" :class="[{'selected':(door[3].status==1)?true:false},'t'+(door[3].type||p.type)]"
+                  @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[3]})">{{door[3].door}}</div>
               </template>
               <template v-if="!!door[2]">
-                <div class="d" :class="[{'selected':(door[2].status==1)?true:false},'t'+(door[2].type||p.type)]">{{door[2].door}}</div>
+                <div class="d" :class="[{'selected':(door[2].status==1)?true:false},'t'+(door[2].type||p.type)]"
+                @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[2]})">{{door[2].door}}</div>
               </template>
-              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+p.type]">{{door[1].door}}</div>
-              <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+p.type]">{{door[0].door}}</div>
+              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+p.type]"
+              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[1]})">{{door[1].door}}</div>
+              <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+p.type]"
+              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[0]})">{{door[0].door}}</div>
             </div>
           </div>
         </div>
@@ -66,8 +75,10 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
           <h4 class="tunit">{{p.units.length-idx}}单元</h4>
           <div class="list">
             <div class="door" v-for="door,didx in u" :key="'door'+didx">
-              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+p.type]">{{door[1].door}}</div>
-              <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+p.type]">{{door[0].door}}</div>
+              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+p.type]"
+              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[1]})">{{door[1].door}}</div>
+              <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+p.type]"
+              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[0]})">{{door[0].door}}</div>
             </div>
           </div>
         </div>
