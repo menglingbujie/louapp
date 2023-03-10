@@ -1,14 +1,25 @@
 import { createRouter, createWebHistory,createWebHashHistory} from "vue-router";
-import PageArea15 from "./views/Area15.vue";
-import PageArea22 from "./views/Area22.vue";
-import PageArea47 from "./views/Area47.vue";
-import PageArea48 from "./views/Area48.vue";
-import PageArea69 from "./views/Area69.vue";
-import PageArea59 from "./views/Area59.vue";
-import PageArea18 from "./views/Area18.vue";
-import PageArea63 from "./views/Area63.vue";
-import PageArea73 from "./views/Area73.vue";
-import PageArea79 from "./views/Area79.vue";
+import PageArea15 from "./views/area/Area15.vue";
+import PageArea22 from "./views/area/Area22.vue";
+import PageArea47 from "./views/area/Area47.vue";
+import PageArea48 from "./views/area/Area48.vue";
+import PageArea69 from "./views/area/Area69.vue";
+import PageArea59 from "./views/area/Area59.vue";
+import PageArea18 from "./views/area/Area18.vue";
+import PageArea63 from "./views/area/Area63.vue";
+import PageArea73 from "./views/area/Area73.vue";
+import PageArea79 from "./views/area/Area79.vue";
+
+import PageLou15 from "./views/lou/Lou15.vue";
+import PageLou22 from "./views/lou/Lou22.vue";
+import PageLou47 from "./views/lou/Lou47.vue";
+import PageLou48 from "./views/lou/Lou48.vue";
+import PageLou69 from "./views/lou/Lou69.vue";
+import PageLou59 from "./views/lou/Lou59.vue";
+import PageLou18 from "./views/lou/Lou18.vue";
+import PageLou63 from "./views/lou/Lou63.vue";
+import PageLou73 from "./views/lou/Lou73.vue";
+import PageLou79 from "./views/lou/Lou79.vue";
 
 import PageAreaTotal from "./views/AreaTotal.vue";
 import PageAreaTotalByFloor from "./views/AreaTotalByFloor.vue";
@@ -93,54 +104,60 @@ const routes=[
         component:PageAreaTotalByFloor,
       },
       {
-        path:"area59",
-        name:"area59",
-        component:PageArea59
-      },
-      {
-        path:"area18",
-        name:"area18",
-        component:PageArea18
-      },
-      {
-        path:"area15",
-        name:"area15",
-        component:PageArea15
-      },
-      {
-        path:"area22",
-        name:"area22",
-        component:PageArea22
-      },
-      {
-        path:"area69",
-        name:"area69",
-        component:PageArea69
-      },
-      {
-        path:"area47",
-        name:"area47",
-        component:PageArea47
-      },
-      {
-        path:"area48",
-        name:"area48",
-        component:PageArea48
-      },
-      {
-        path:"area63",
-        name:"area63",
-        component:PageArea63
-      },
-      {
-        path:"area73",
-        name:"area73",
-        component:PageArea73
-      },
-      {
-        path:"area79",
-        name:"area79",
-        component:PageArea79
+        path:"area",
+        name:"area",
+        children:[
+          {
+            path:"15",
+            name:"area15",
+            component:PageArea15
+          },
+          {
+            path:"18",
+            name:"area18",
+            component:PageArea18
+          },
+          {
+            path:"22",
+            name:"area22",
+            component:PageArea22
+          },
+          {
+            path:"47",
+            name:"area47",
+            component:PageArea47
+          },
+          {
+            path:"48",
+            name:"area48",
+            component:PageArea48
+          },
+          {
+            path:"59",
+            name:"area59",
+            component:PageArea59
+          },
+          {
+            path:"63",
+            name:"area63",
+            component:PageArea63
+          },
+          {
+            path:"69",
+            name:"area69",
+            component:PageArea69
+          },
+          {
+            path:"73",
+            name:"area73",
+            component:PageArea73
+          },
+          {
+            path:"79",
+            name:"area79",
+            component:PageArea79
+          },
+        ]
       }
     ],
   }
