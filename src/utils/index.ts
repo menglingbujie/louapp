@@ -1,4 +1,8 @@
-import {forEach,set,toString,toNumber} from "lodash";
+import {forEach,set,toString,toNumber,get} from "lodash";
+import {Village} from "@/utils/enum";
+export function displayCun(cun){
+  return get(Village,cun)||"未知村";
+}
 export function starCardID(idstr){
   return idstr.replace(/(\w{6})\w*(\w{4})/,'$1********$2');
 }

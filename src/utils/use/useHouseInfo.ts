@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import qlhlou from '@/modal/qlhlou.json';
+import qlhlou from '@/modal/qlhlou.min';
 
 /** 房子信息
  * @last-modified 2023/03/08
