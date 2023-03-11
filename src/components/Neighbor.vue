@@ -1,7 +1,6 @@
 <script setup>
-import {nextTick, ref} from "vue"
-import {get} from "lodash"
-import {starCardID} from "@/utils/index"
+import { ref} from "vue"
+import {starCardID,displayCun} from "@/utils/index"
 const props = defineProps({
     title:String,
     neighbor:{
@@ -22,17 +21,7 @@ const info = ref({
     house
 })
 const hasNeighbor = ref(!!props.neighbor);
-const cunMap = {
-    BS:"北四位",
-    NS:"南四位",
-    XY:"晓幼营",
-    CL:"常乐寺",
-    XS:"西石府",
-    SW:"上万"
-}
-function displayCun(cun){
-    return get(cunMap,cun)
-}
+
 function displayUID(uid){
     return starCardID(uid);
 }

@@ -13,26 +13,22 @@ import loumap73 from "@/modal/area73"
 import loumap79 from "@/modal/area79"
 
 import CMPLou15 from "@/components/lou/Lou15.vue";
-// import CMPLou18 from "@/components/lou/Lou18.vue";
-// import CMPLou22 from "@/components/lou/Lou22.vue";
-// import CMPLou47 from "@/components/lou/Lou47.vue";
-// import CMPLou48 from "@/components/lou/Lou48.vue";
-// import CMPLou59 from "@/components/lou/Lou59.vue";
-// import CMPLou63 from "@/components/lou/Lou63.vue";
-// import CMPLou69 from "@/components/lou/Lou69.vue";
-// import CMPLou73 from "@/components/lou/Lou73.vue";
-// import CMPLou79 from "@/components/lou/Lou79.vue";
+import CMPLou18 from "@/components/lou/Lou18.vue";
+import CMPLou22 from "@/components/lou/Lou22.vue";
+import CMPLou47 from "@/components/lou/Lou47.vue";
+import CMPLou48 from "@/components/lou/Lou48.vue";
+import CMPLou59 from "@/components/lou/Lou59.vue";
+import CMPLou63 from "@/components/lou/Lou63.vue";
+import CMPLou69 from "@/components/lou/Lou69.vue";
+import CMPLou73 from "@/components/lou/Lou73.vue";
+import CMPLou79 from "@/components/lou/Lou79.vue";
 
-import {ref} from "vue";
-import {forEach,cloneDeep,set,toNumber} from "lodash";
+import {ref,reactive} from "vue";
+import {forEach,cloneDeep,set,toNumber,find} from "lodash";
 import {filterUniq} from "@/utils/index";
 
 // 定义每个地块楼的排列顺序
 
-// 地块排序
-function sortLouArea(arr){
-
-}
 function parseUser(u,l){
   let _u =cloneDeep(u);
 
@@ -47,21 +43,31 @@ function parseUser(u,l){
 }
 function doInsertUserToLou(users,lous){
   // 遍历users然后解析user的unitID，然后把当前user放到响应的lou里
+  // console.log("==users==",users);
+  // console.log("==lous==",lous);
   forEach(users,(user)=>{
     const _unitID = user.unitID,
       _unitObj = _unitID.split("-"),
-      _lou = toNumber(_unitObj[1]),
-      _unit = toNumber(_unitObj[2]),
-      _room = toNumber(_unitObj[3]);
+      _numLou = toNumber(_unitObj[1]),
+      _numUnit = toNumber(_unitObj[2]),
+      _numRoom = toNumber(_unitObj[3]);
 
     // console.log("===usr=="+_lou+"=="+_unit+"--"+_room)
-    let _room1 = parseInt(_room/100),
-    _room2 = parseInt(_room%100);
+    let _room1 = parseInt(_numRoom/100),
+    _room2 = parseInt(_numRoom%100);
     // console.log(`=${_lou}=${_unit}=${(_room1-1)}`,lous[_lou-1].units[_unit-1])
-    const _arrUnits = lous[_lou-1].units[_unit-1];
+
+    // unit需要跟lou的part做匹配
+    const _lou = find(lous,{part:_numLou});
+    // console.log("====",_lou,"===",_numLou)
+    // console.log("===",_lou,"===",_numLou,"===",_unit)
+    const _unitLen = _lou.units.length;
+    const _arrUnits = _lou.units[_unitLen-_numUnit];
+    // console.log("====",_arrUnits)
     if(_arrUnits){
       const _louCeng = _arrUnits.length;
-      set(lous[_lou-1].units[_unit-1][_louCeng-_room1][_room2-1],"user",user);
+      // set(_arrUnits[_louCeng-_room1][_room2-1],"user",user);
+      set(_arrUnits[_louCeng-_room1][_room2-1],"user",user);
     }
   })
   // console.log("===user===",lous);
@@ -97,15 +103,15 @@ function tidyLouArea(arr){
 
   // 往原始排序里添加user字段
   doInsertUserToLou(nbs15,loumap15);
-  // doInsertUserToLou(nbs18,loumap18);
-  // doInsertUserToLou(nbs22,loumap22);
-  // doInsertUserToLou(nbs47,loumap47);
-  // doInsertUserToLou(nbs48,loumap48);
-  // doInsertUserToLou(nbs59,loumap59);
-  // doInsertUserToLou(nbs63,loumap63);
-  // doInsertUserToLou(nbs69,loumap69);
-  // doInsertUserToLou(nbs73,loumap73);
-  // doInsertUserToLou(nbs79,loumap79);
+  doInsertUserToLou(nbs18,loumap18);
+  doInsertUserToLou(nbs22,loumap22);
+  doInsertUserToLou(nbs47,loumap47);
+  doInsertUserToLou(nbs48,loumap48);
+  doInsertUserToLou(nbs59,loumap59);
+  doInsertUserToLou(nbs63,loumap63);
+  doInsertUserToLou(nbs69,loumap69);
+  doInsertUserToLou(nbs73,loumap73);
+  doInsertUserToLou(nbs79,loumap79);
 }
 // 根据地块整理数据
 function parseLouByArea(){
@@ -118,11 +124,69 @@ function parseLouByArea(){
   tidyLouArea(_lous);
 }
 parseLouByArea();
+
 const currentMenu = ref(["a15"]);
+let currentLouCMP = reactive({
+  com:CMPLou15
+});
+let currentLouData = ref(loumap15);
+
 // 根据地块显示楼的情况
 function doShowLouStatus(area){
   currentMenu.value = ['a'+area];
-  console.log("==area==",area);
+
+  switch(area){
+    case 15:{
+      currentLouCMP.com=CMPLou15;
+      currentLouData.value=loumap15;
+      break;
+    }
+    case 18:{
+      currentLouCMP.com=CMPLou18;
+      currentLouData.value=loumap18;
+      break;
+    }
+    case 22:{
+      currentLouCMP.com=CMPLou22;
+      currentLouData.value=loumap22;
+      break;
+    }
+    case 47:{
+      currentLouCMP.com=CMPLou47;
+      currentLouData.value=loumap47;
+      break;
+    }
+    case 48:{
+      currentLouCMP.com=CMPLou48;
+      currentLouData.value=loumap48;
+      break;
+    }
+    case 59:{
+      currentLouCMP.com=CMPLou59;
+      currentLouData.value=loumap59;
+      break;
+    }
+    case 63:{
+      currentLouCMP.com=CMPLou63;
+      currentLouData.value=loumap63;
+      break;
+    }
+    case 69:{
+      currentLouCMP.com=CMPLou69;
+      currentLouData.value=loumap69;
+      break;
+    }
+    case 73:{
+      currentLouCMP.com=CMPLou73;
+      currentLouData.value=loumap73;
+      break;
+    }
+    case 79:{
+      currentLouCMP.com=CMPLou79;
+      currentLouData.value=loumap79;
+      break;
+    }
+  }
 }
 
 const visible = ref(false);
@@ -160,7 +224,10 @@ function receiveMessage(event){
       <a-menu-item key="a79" @click.stop="doShowLouStatus(79)">#79地块</a-menu-item>
     </a-menu>
     <div class="content">
-      <CMPLou15 :data="loumap15" />
+      <!-- <CMPLou15 :data="loumap15" /> -->
+      <KeepAlive>
+        <component :is="currentLouCMP.com" :data="currentLouData"></component>
+      </KeepAlive>
     </div>
   </a-layout-content>
   <!-- 抽屉 -->

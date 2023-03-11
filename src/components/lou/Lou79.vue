@@ -1,10 +1,24 @@
 <script setup>
-import loumap from "@/modal/area79"
-import {countLou} from "@/utils/index"
+import {countLou,displayCun} from "@/utils/index"
 import { useHouseInfo } from '@/utils/use/useHouseInfo';
-const { info, getHouseInfo } = useHouseInfo();
+const { getHouseInfo } = useHouseInfo();
 const land = '79'; //地块
 
+const props = defineProps({
+  data:Array,
+  default:[]
+})
+function displayDoor(door){
+  if(!door){return;}
+  if(!door.user){
+    // console.log("===door==",door);
+    return door.door+"<br>未选<br>未知村";
+  }
+  // console.log("===",door.user);
+  return door.door+"<br>"+door.user["被腾退人"]+"<br>"+displayCun(door.user["村落简称"]);
+}
+
+const loumap = props.data;
 const firstlout = loumap.slice(0,3);
 const loumapother = loumap.slice(3);
 const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(loumap);
@@ -31,10 +45,12 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
           <h4 class="tunit">{{p.units.length-idx}}单元</h4>
           <div class="list">
             <div class="door" v-for="door,didx in u" :key="'door'+didx">
-              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+(door[1].type||p.type)]"
-              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[1]})">{{door[1].door}}</div>
-              <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+(door[0].type||p.type)]"
-              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[0]})">{{door[0].door}}</div>
+              <div class="d" :class="[{'selected':!!door[1].user?true:false},'t'+(door[1].type||p.type)]"
+              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[1]})"
+              v-html="displayDoor(door[1])"></div>
+              <div class="d" :class="[{'selected':!!door[0].user?true:false},'t'+(door[0].type||p.type)]"
+              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[0]})"
+              v-html="displayDoor(door[0])"></div>
             </div>
           </div>
         </div>
@@ -49,10 +65,12 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
           <h4 class="tunit">{{p.units.length-idx}}单元</h4>
           <div class="list">
             <div class="door" v-for="door,didx in u" :key="'door'+didx">
-              <div class="d" :class="[{'selected':(door[1].status==1)?true:false},'t'+(door[1].type||p.type)]"
-              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[1]})">{{door[1].door}}</div>
-              <div class="d" :class="[{'selected':(door[0].status==1)?true:false},'t'+(door[0].type||p.type)]"
-              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[0]})">{{door[0].door}}</div>
+              <div class="d" :class="[{'selected':!!door[1].user?true:false},'t'+(door[1].type||p.type)]"
+              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[1]})"
+              v-html="displayDoor(door[1])"></div>
+              <div class="d" :class="[{'selected':!!door[0].user?true:false},'t'+(door[0].type||p.type)]"
+              @click="getHouseInfo({land, p, unit: p.units.length-idx, door: door[0]})"
+              v-html="displayDoor(door[0])"></div>
             </div>
           </div>
         </div>
@@ -92,6 +110,7 @@ const {_total3,_total2,_total1,_total3done,_total2done,_total1done} = countLou(l
             display:flex;
             padding:0 6px;
             >.d{
+              min-width:64px;
               padding:0 8px;
               border:1px solid @color_black;
               &.t1{
