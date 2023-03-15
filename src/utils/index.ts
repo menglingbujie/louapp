@@ -1,4 +1,78 @@
-import {forEach,set,toString,toNumber} from "lodash";
+import {forEach,set,toString,toNumber,get,find,cloneDeep} from "lodash";
+import {Village} from "@/utils/enum";
+
+// 定义每个地块楼的排列顺序
+function parseUser(u:any,l:any){
+  let _u =cloneDeep(u);
+
+  set(_u,"unitID",l.unitID);
+  set(_u,"lou",l.lou);
+  set(_u,"unit",l.unit);
+  set(_u,"room",l.room);
+  delete _u["选房信息"];
+  delete _u.lous;
+
+  return _u;
+}
+function doInsertUserToLou(users,lous){
+  // 遍历users然后解析user的unitID，然后把当前user放到响应的lou里
+  // console.log("==users==",users);
+  // console.log("==lous==",lous);
+  forEach(users,(user)=>{
+    const _unitID = user.unitID,
+      _unitObj = _unitID.split("-"),
+      _numLou = toNumber(_unitObj[1]),
+      _numUnit = toNumber(_unitObj[2]),
+      _numRoom = toNumber(_unitObj[3]);
+
+    // console.log("===usr=="+_lou+"=="+_unit+"--"+_room)
+    let _room1 = Math.floor(_numRoom/100),
+    _room2 = _numRoom%100;
+    // console.log(`=${_lou}=${_unit}=${(_room1-1)}`,lous[_lou-1].units[_unit-1])
+
+    // unit需要跟lou的part做匹配
+    const _lou = find(lous,{part:_numLou});
+    // console.log("====",_lou,"===",_numLou)
+    // console.log("===",_lou,"===",_numLou,"===",_unit)
+    const _arrUnits = _lou.units[_numUnit-1];
+    // console.log("====",_arrUnits)
+    if(_arrUnits){
+      const _louCeng = _arrUnits.length;
+      // set(_arrUnits[_louCeng-_room1][_room2-1],"user",user);
+      set(_arrUnits[_louCeng-_room1][_room2-1],"user",user);
+    }
+  })
+  // console.log("===user===",lous);
+}
+
+// 地块归位
+function tidyLouArea(arr,loumap){
+  let nbsArr:any[]=[];
+  forEach(arr,(u)=>{
+    forEach(u.lous,(l)=>{
+      if(l.area=="15"){
+        nbsArr.push(parseUser(u,l));
+      }
+    })
+  })
+
+  // 往原始排序里添加user字段
+  doInsertUserToLou(nbsArr,loumap);
+}
+// 根据地块整理数据
+export function parseLouByArea(list,loumap){
+  const _list =list||[];
+  // 滤重
+  const _lous = filterUniq(_list);
+  // console.log("===",_lous)
+
+  // 用户地块归位
+  tidyLouArea(_lous,loumap);
+}
+
+export function displayCun(cun){
+  return get(Village,cun)||"未知村";
+}
 export function starCardID(idstr){
   return idstr.replace(/(\w{6})\w*(\w{4})/,'$1********$2');
 }

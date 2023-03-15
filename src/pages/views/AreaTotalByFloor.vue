@@ -114,9 +114,9 @@ function doCollapseAll(){
 </script>
 <template>
 <a-layout class="area_total">
-  <a-layout-header class="header">
+  <!-- <a-layout-header class="header">
     <h3 class="title">未选情况统计</h3>
-  </a-layout-header>
+  </a-layout-header> -->
   <a-layout-content class="container">
     <a-menu class="menus" :selectedKeys="currentMenu">
       <a-menu-item key="a15" @click.stop="doCountLou(15)">#15地块</a-menu-item>

@@ -42,6 +42,7 @@ const updateDataTime=ref(import.meta.env.VITE_UPDATE_DATA_TIME);
 </template>
 <style lang="less" scoped>
 .area_total{
+  padding:10px 0;
   display:flex;
   justify-content: center;
   align-items: center;

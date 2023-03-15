@@ -139,6 +139,7 @@ doSearch();
 <style lang="less" scoped>
 .page.search{
     height:100%;
+    padding:10px 0;
     >.filter{
         display:flex;
         padding:0 10px;

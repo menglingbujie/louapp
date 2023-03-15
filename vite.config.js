@@ -3,8 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import Components from "unplugin-vue-components/vite"
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 
-import devServerRouter from "./plugins/devServerRouter"
-
 import {resolve} from "path"
 // https://vitejs.dev/config/
 export default ({mode})=>{
@@ -16,9 +14,6 @@ export default ({mode})=>{
       vue({
         refTransform:true
       }),
-      devServerRouter([
-        ["/lou","/lou/"],
-      ]),
       Components({
         dts:true,
         resolvers:[
@@ -27,8 +22,9 @@ export default ({mode})=>{
       })
     ],
     root:resolve(__dirname,"src/pages"),
-    base:"/louapp/dist",
+    
     publicDir:resolve(__dirname,"public"),
+    base:"/louapp/dist",
     resolve:{
       alias:[
         {
@@ -55,7 +51,9 @@ export default ({mode})=>{
       outDir:resolve(__dirname,"dist"),
       rollupOptions:{
         input:{
-          lou:resolve(__dirname,"./src/pages/index.html")
+          main:resolve(__dirname,"./src/pages/index.html"),
+          lou:resolve(__dirname,"./src/pages/lou.html"),
+          area:resolve(__dirname,"./src/pages/area.html")
         }
       }
     }

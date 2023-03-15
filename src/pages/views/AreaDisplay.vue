@@ -1,16 +1,6 @@
 <script setup>
 import {ref} from "vue"
-import loumap15 from "@/modal/area15"
-import loumap18 from "@/modal/area18"
-import loumap22 from "@/modal/area22"
-import loumap47 from "@/modal/area47"
-import loumap48 from "@/modal/area48"
-import loumap59 from "@/modal/area59"
-import loumap69 from "@/modal/area69"
-import loumap63 from "@/modal/area63"
-import loumap73 from "@/modal/area73"
-import loumap79 from "@/modal/area79"
-import _ from "lodash";
+
 // import { UserOutlined } from '@ant-design/icons-vue';
 import { Village } from '@/utils/enum';
 
@@ -21,7 +11,7 @@ function gotoLou(url){
 const currentMenu = ref(["a15"]);
 function doCountLou(area){
   currentMenu.value = ['a'+area];
-  gotoLou(`/louapp/dist/#/area${area}`);
+  gotoLou(`/louapp/dist/area.html#/${area}`);
 }
 doCountLou(15)
 const updateDataTime=ref(import.meta.env.VITE_UPDATE_DATA_TIME);
@@ -70,27 +60,30 @@ const afterVisibleChange = (bool) => {
       <iframe class="ifr" :src="currentUrl"></iframe>
     </div>
   </a-layout-content>
+  <!-- 抽屉 -->
+  <a-drawer
+    v-model:visible="visible"
+    style="color: red"
+    title="House Information"
+    placement="right"
+    :mask="false"
+    @after-visible-change="afterVisibleChange">
+    <a-card :title="selectedTitle" :bordered="false" style="width: 300px">
+      <a-avatar :size="64"> 
+      </a-avatar>
+      <p>业主： <a-tag color="green">{{ selectedHouse['被腾退人'] }}</a-tag></p>
+      <p>村落： <a-tag color="orange">{{ Village[selectedHouse['村落简称']] }}</a-tag></p>
+    </a-card>
+    
+  </a-drawer>
 </a-layout>
-<!-- 抽屉 -->
-<a-drawer
-  v-model:visible="visible"
-  style="color: red"
-  title="House Information"
-  placement="right"
-  :mask="false"
-  @after-visible-change="afterVisibleChange">
-  <a-card :title="selectedTitle" :bordered="false" style="width: 300px">
-    <a-avatar :size="64"> 
-    </a-avatar>
-    <p>业主： <a-tag color="green">{{ selectedHouse['被腾退人'] }}</a-tag></p>
-    <p>村落： <a-tag color="orange">{{ Village[selectedHouse['村落简称']] }}</a-tag></p>
-  </a-card>
-  
-</a-drawer>
 </template>
 <style lang="less">
 .ant-layout-header{
   height:40px;line-height:40px;
+}
+.parts{
+  background-color:whitesmoke;
 }
 </style>
 <style lang="less" scoped>
@@ -117,7 +110,8 @@ const afterVisibleChange = (bool) => {
     >.content{
       overflow:hidden;
       max-height:100%;height:100%;
-      overflow-y:auto;
+      overflow-y:hidden;
+      background-color:whitesmoke;
       >.ifr{
         border:none;
         width:100%;height:100%;
