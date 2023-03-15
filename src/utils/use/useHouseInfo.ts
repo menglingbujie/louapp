@@ -5,7 +5,7 @@ import qlhlou from '@/modal/qlhlou.min';
  * @last-modified 2023/03/08
  * @param {object} {land, p, unit, door} */
 export const useHouseInfo = () => {
-  let info = ref();
+  let info = ref({});
 
   function getHouseInfo(param: {land: string, p: string, unit: string, door: string}){
     const { land, p, unit, door } = param

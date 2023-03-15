@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 import loumap from "@/modal/area15";
 import {countLou} from "@/utils/index";
 import { useHouseInfo } from '@/utils/use/useHouseInfo';

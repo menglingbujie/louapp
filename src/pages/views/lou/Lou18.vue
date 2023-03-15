@@ -1,5 +1,5 @@
 <script setup>
-import qlhloumap from "@/modal/qlhlou.min"
+import {ref} from "vue";
 import gloumap from "@/modal/area18"
 import {countLou,displayCun,parseLouByArea} from "@/utils/index";
 
@@ -8,7 +8,7 @@ const { getHouseInfo } = useHouseInfo();
 const land = '18'; //地块
 
 const isLoading =ref(true);
-parseLouByArea(qlhloumap.list,gloumap);
+parseLouByArea(gloumap,land);
 isLoading.value=false;
 
 // console.log("===loumap==",loumap);
@@ -161,7 +161,7 @@ function displayDoor(door){
             display:flex;
             padding:0 6px;
             >.d{
-              min-width:64px;
+              min-width:68px;
               padding:0 8px;
               border:1px solid @color_black;
               &.t1{

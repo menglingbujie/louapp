@@ -15,8 +15,8 @@ function doShowLouStatus(area){
 }
 
 const visible = ref(false);
-let selectedHouse = ref();
-let selectedTitle = ref();
+let selectedHouse = ref("");
+let selectedTitle = ref("");
 
 window.addEventListener("message", receiveMessage, false);
 function receiveMessage(event){  

@@ -1,6 +1,6 @@
 import {forEach,set,toString,toNumber,get,find,cloneDeep} from "lodash";
 import {Village} from "@/utils/enum";
-
+import qlhloumap from "@/modal/qlhlou.min"
 // 定义每个地块楼的排列顺序
 function parseUser(u:any,l:any){
   let _u =cloneDeep(u);
@@ -32,27 +32,32 @@ function doInsertUserToLou(users,lous){
 
     // unit需要跟lou的part做匹配
     const _lou = find(lous,{part:_numLou});
-    // console.log("====",_lou,"===",_numLou)
-    // console.log("===",_lou,"===",_numLou,"===",_unit)
+    // console.log("====lou==",user,"===",_lou,"===",_numLou,"===",_numUnit,"===",_room1,"===",_room2)
+    // if(!_lou){return;}
+
     const _arrUnits = _lou.units[_numUnit-1];
-    // console.log("====",_arrUnits)
-    if(_arrUnits){
-      const _louCeng = _arrUnits.length;
-      // set(_arrUnits[_louCeng-_room1][_room2-1],"user",user);
-      set(_arrUnits[_louCeng-_room1][_room2-1],"user",user);
+    // console.log("==units==",_arrUnits)
+
+    if(!_arrUnits){
+      return;
     }
+    const _louCeng = _arrUnits.length;
+    // if(_louCeng<_room1){return;}
+    set(_arrUnits[_louCeng-_room1][_room2-1],"user",user);
   })
   // console.log("===user===",lous);
 }
 
 // 地块归位
-function tidyLouArea(arr,loumap){
+function tidyLouArea(arr,loumap,area){
   let nbsArr:any[]=[];
   forEach(arr,(u)=>{
     forEach(u.lous,(l)=>{
-      if(l.area=="15"){
-        nbsArr.push(parseUser(u,l));
+      // console.log("====",l.area,"===",area);
+      if(l.area!=toNumber(area)){
+        return;
       }
+      nbsArr.push(parseUser(u,l));
     })
   })
 
@@ -60,14 +65,14 @@ function tidyLouArea(arr,loumap){
   doInsertUserToLou(nbsArr,loumap);
 }
 // 根据地块整理数据
-export function parseLouByArea(list,loumap){
-  const _list =list||[];
+export function parseLouByArea(loumap,area){
+  const _list =qlhloumap.list||[];
   // 滤重
   const _lous = filterUniq(_list);
-  // console.log("===",_lous)
+  // console.log("====lous==",_lous)
 
   // 用户地块归位
-  tidyLouArea(_lous,loumap);
+  tidyLouArea(_lous,loumap,area);
 }
 
 export function displayCun(cun){

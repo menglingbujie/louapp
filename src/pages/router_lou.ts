@@ -1,12 +1,12 @@
 import { createRouter,createWebHashHistory} from "vue-router";
 
 import PageLou15 from "./views/lou/Lou15.vue";
+import PageLou18 from "./views/lou/Lou18.vue";
 import PageLou22 from "./views/lou/Lou22.vue";
 import PageLou47 from "./views/lou/Lou47.vue";
 import PageLou48 from "./views/lou/Lou48.vue";
 import PageLou69 from "./views/lou/Lou69.vue";
 import PageLou59 from "./views/lou/Lou59.vue";
-import PageLou18 from "./views/lou/Lou18.vue";
 import PageLou63 from "./views/lou/Lou63.vue";
 import PageLou73 from "./views/lou/Lou73.vue";
 import PageLou79 from "./views/lou/Lou79.vue";
